@@ -28,7 +28,7 @@ class Token {
         // Not fetching, create a promise
         this.#ongoingPromise = (async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/refresh`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/refresh`, {
                     credentials: 'include',
                 });
                 if (!response.ok) throw new StatusError(response.status, response.statusText);

@@ -16,7 +16,7 @@ function Verify() {
                 return;
             }
 
-            const response = await api.publicPost('verify', { token: params.token });
+            const response = await api.publicPost('auth/verify', { token: params.token });
             if (api.evaluateResponse(response)) {  // Successful login
                 if (typeof response.username === 'string') {
                     user.logIn(response.username);

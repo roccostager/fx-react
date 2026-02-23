@@ -26,7 +26,7 @@ function Register() {
         <form className="" onSubmit={async event => {
             event.preventDefault();
 
-            const response = await api.publicPost('register', { email, password });
+            const response = await api.publicPost('auth/register', { email, password });
             if (api.evaluateResponse(response)) {  // Successful login
                 if (typeof response.username === 'string') {
                     user.logIn(response.username);
