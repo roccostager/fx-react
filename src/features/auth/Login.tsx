@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import api from "../../api/api";
 import user from "../../api/auth";
@@ -9,6 +9,16 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
+
+    useEffect(() => {  // Redirect away if logged in
+        (async () => {
+            await user.sync();
+            if (user.isAuthenticated) {
+                navigate('/');
+                return;
+            }
+        })();
+    }, []);
 
     return (<>
         <h1 className="">Log in</h1>

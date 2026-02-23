@@ -11,7 +11,7 @@ function Verify() {
     useEffect(() => {
         (async () => {
             await user.sync();
-            if (user.isAuthenticated) {
+            if (user.isAuthenticated || !params.token) {
                 navigate('/');
                 return;
             }
